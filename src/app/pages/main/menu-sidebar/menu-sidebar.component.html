@@ -1,0 +1,67 @@
+<aside #mainSidebar class="main-sidebar sidebar-dark-warning elevation-4">
+  <!-- Brand Logo -->
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <a [routerLink]="['/']" class="brand-link">
+      <img
+        src="assets/img/ibesweb.png"
+        alt="AdminLTE Logo"
+        class="brand-image  elevation-3"
+        style="opacity: 0.8;"
+      />
+      <span class="brand-text font-weight-light">IbesWeb 4</span>
+    </a>
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+             <div class="user-panel mt-2 pb-2 mb-2 d-flex">
+              <div class="image">
+                <img
+                  src="assets/img/users/{{usuario.image}}"
+                  class="img-circle elevation-2"
+                  alt="User Image"
+                />
+              </div>
+              <div class="info">
+                <a [routerLink]="['/profile']" class="d-block">{{usuario.nombre}} {{usuario.apellido}}</a>
+              </div>
+            </div>
+
+        <li class="nav-item has-treeview" *ngFor="let menu of menus">
+
+          <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>
+             {{menu.menuId}} - {{menu.menuNom}}
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" *ngFor="let sub of menu.submenu">
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  {{sub.submenuId}} - {{sub.submenuNom}}
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview" *ngFor="let op of sub.option">
+                <li class="nav-item">
+                  <a style="cursor: pointer;" (click)="rutaLink(op)" class="nav-link ">
+                    <i class="far fa-dot-circle nav-icon"></i>
+                    <p>{{op.optionId}} - {{op.optionNom}}</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
