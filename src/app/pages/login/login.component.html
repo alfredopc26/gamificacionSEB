@@ -1,25 +1,27 @@
 <div class="login-box">
   <div class="login-logo">
-    <a [routerLink]="['/']"><b>IbesWeb</b>4</a>
+    <b>SEB </b>Gamify <br>
     <img
-    src="assets/img/ibesweb.png"
-    alt="AdminLTE Logo"
+    src="assets/img/Logo-SEB.jpeg"
+    alt="Logo SEB"
     class=""
     style="opacity: 0.8;"
+    width="100"
+    height="100"
   />
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Para el inicio de sesion necesita una cuenta del dominio SB</p>
+      <p class="login-box-msg">Para el inicio de sesion necesita una cuenta autorizada por su institucion</p>
 
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="input-group mb-3">
           <input
-            formControlName="usuario"
+            formControlName="email"
             type="string"
             class="form-control"
-            placeholder="Usuario"
+            placeholder="Email"
           />
           <div class="input-group-append">
             <div class="input-group-text">
@@ -45,19 +47,19 @@
             <div class="icheck-primary">
               <input type="checkbox" id="remember" />
               <label for="remember">
-                Recordar
+                 Recordar
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-5">
-              <button class="btn btn-primary"></button>            
+              <button class="btn btn-primary btn-block" >Iniciar</button>            
           </div>
           <!-- /.col -->
         </div>
       </form>
       <!-- /.social-auth-links -->
-
+      <span style="color:Red;">{{errorMessage}}</span>
       <p class="mb-1">
         <a [routerLink]="['/forgot-password']">Necesito ayuda</a>
       </p>

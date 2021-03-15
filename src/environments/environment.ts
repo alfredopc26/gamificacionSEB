@@ -2,8 +2,21 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const firebaseConfig = {
+  apiKey: "AIzaSyB-jn81qNqCImVWefvIHNloTUQEjGJ27vk",
+  authDomain: "sebgamify.firebaseapp.com",
+  databaseURL: "https://sebgamify-default-rtdb.firebaseio.com",
+  projectId: "sebgamify",
+  storageBucket: "sebgamify.appspot.com",
+  messagingSenderId: "143809263157",
+  appId: "1:143809263157:web:dc15e69ac953ef4f72a37c",
+  measurementId: "G-BTZCZTW4NQ"
+};
+
+
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig
 };
 
 /*

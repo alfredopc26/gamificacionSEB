@@ -1,6 +1,7 @@
-import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild , NgZone} from '@angular/core';
 import { CookieService } from "ngx-cookie-service";
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +12,13 @@ export class MainComponent implements OnInit {
   public sidebarMenuOpened = true;
   @ViewChild('contentWrapper', { static: false }) contentWrapper;
 
-  constructor(private renderer: Renderer2, private cookies: CookieService, private router: Router) {}
+  constructor(
+    private renderer: Renderer2, 
+    private cookies: CookieService, 
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private ngZone: NgZone 
+    ) {}
 
   ngOnInit() {
     this.renderer.removeClass(document.querySelector('app-root'), 'login-page');
@@ -25,6 +32,18 @@ export class MainComponent implements OnInit {
     if(localStorage.getItem('token')!='LOGGED_IN'){
       this.router.navigate(['login']);
     }
+
+    this.afAuth.user.subscribe(user => {
+      if (user) {
+        this.ngZone.run(() => {
+          this.router.navigate(['/']);
+        });
+      }else{
+        this.ngZone.run(() => {
+          this.router.navigate(['/login']);
+        });
+      }
+    });
     
   }
 

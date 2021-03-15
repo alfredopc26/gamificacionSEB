@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire'; // Firebase config
+import { AngularFirestoreModule } from '@angular/fire/firestore'; // For Cloud Firestore
+import { environment } from 'src/environments/environment'; // Config
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,6 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,

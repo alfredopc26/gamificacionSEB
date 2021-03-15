@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AppService } from 'src/app/utils/services/app.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,11 @@ export class HeaderComponent implements OnInit {
   @Output() toggleMenuSidebar: EventEmitter<any> = new EventEmitter<any>();
   public searchForm: FormGroup;
 
-  constructor(private appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private afAuth: AngularFireAuth,
+    private router: Router
+    ) {}
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -20,6 +26,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.appService.logout();
+    this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
   }
 }
