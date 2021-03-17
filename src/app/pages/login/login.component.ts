@@ -4,6 +4,7 @@ import { ApiService } from '../../utils/services/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { LoginObject } from "../../../modelo/login-object";
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: new FormControl(null, Validators.required),
     });
     this.afAuth.user.subscribe(user => {
-      if (user) {
+      if (user) {        
         this.ngZone.run(() => {
           this.router.navigate(['/']);
         });

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginObject } from "../../../modelo/login-object";
 
 
 @Component({
@@ -8,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  admin: LoginObject;
 
-  ngOnInit(): void {
+  constructor(
+    private afAuth: AngularFireAuth,
+
+  ) { }
+
+  ngOnInit(){
+
+    this.afAuth.user.subscribe(user => {
+      if (user) { 
+       
+      }else{
+       
+
+      }
+    });
+
   }
 
 }

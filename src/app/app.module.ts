@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 
 import { MainComponent } from './pages/main/main.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -25,6 +25,7 @@ import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-men
 
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     MessagesDropdownMenuComponent,
     NotificationsDropdownMenuComponent,
     UserDropdownMenuComponent,
-    DashboardComponent
+    DashboardComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
 
   ],

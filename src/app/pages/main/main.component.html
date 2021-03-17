@@ -1,8 +1,9 @@
 <div class="wrapper">
-  <app-header (toggleMenuSidebar)="toggleMenuSidebar()"></app-header>
+  <app-header (toggleMenuSidebar)="toggleMenuSidebar()" ></app-header>
 
   <app-menu-sidebar
     (mainSidebarHeight)="mainSidebarHeight($event)"
+    [admin] = "admin" 
   ></app-menu-sidebar>
 
   <div #contentWrapper class="content-wrapper">

@@ -5,7 +5,8 @@ import {
   ViewChild,
   Output,
   EventEmitter,
-  Renderer2
+  Renderer2,
+  Input
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
 import { UsuarioService } from '../../../../servicios/usuario.service';
@@ -13,7 +14,7 @@ import { Usuario } from '../../../../modelo/usuario';
 import { Menu } from '../../../../modelo/menu';
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { LoginObject } from "../../../../modelo/login-object";
 
 @Component({
   selector: 'app-menu-sidebar',
@@ -26,7 +27,7 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
   id: string;
 
   
-
+  @Input() admin: LoginObject;
   @ViewChild('mainSidebar', { static: false }) mainSidebar;
   @Output() mainSidebarHeight: EventEmitter<any> = new EventEmitter<any>();
   constructor(

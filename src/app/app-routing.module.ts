@@ -8,7 +8,7 @@ import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'blank',
-        component: MainComponent,
+        path: 'usuarios',
+        component: UsuariosComponent,
       },
       {
         path: 'configuracion',

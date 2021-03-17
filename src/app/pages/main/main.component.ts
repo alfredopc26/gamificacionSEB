@@ -2,6 +2,8 @@ import { Component, OnInit, Renderer2, ViewChild , NgZone} from '@angular/core';
 import { CookieService } from "ngx-cookie-service";
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginService } from '../../utils/services/login.service';
+import { LoginObject } from "../../../modelo/login-object";
 
 @Component({
   selector: 'app-main',
@@ -10,6 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class MainComponent implements OnInit {
   public sidebarMenuOpened = true;
+  admin: LoginObject;
   @ViewChild('contentWrapper', { static: false }) contentWrapper;
 
   constructor(
@@ -17,7 +20,8 @@ export class MainComponent implements OnInit {
     private cookies: CookieService, 
     private afAuth: AngularFireAuth,
     private router: Router,
-    private ngZone: NgZone 
+    private ngZone: NgZone,
+    private _admin: LoginService,
     ) {}
 
   ngOnInit() {
@@ -31,6 +35,17 @@ export class MainComponent implements OnInit {
     this.afAuth.user.subscribe(user => {
       if (user) {
         this.ngZone.run(() => {
+          this._admin.getByCorreo(user.email).subscribe(response => {
+            response.docs.find(value => {
+              const data = value.data();
+              let datos: LoginObject = {
+                correo: data.correo,
+                nombre: data.nombre,
+                admin: data.admin,
+              };  
+              this.admin = datos;                          
+            });
+          });
           this.router.navigate(['/dashboard']);
         });
       }else{
