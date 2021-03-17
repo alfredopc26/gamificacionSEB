@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.valid) {
 
       this.afAuth.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password).then(() => {
-        this.router.navigate(['/productos']);
+        this.router.navigate(['/']);
       }).catch(response => {
         this.errorMessage = response.message;
       });

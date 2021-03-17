@@ -28,15 +28,10 @@ export class MainComponent implements OnInit {
     );
 
       // console.log(localStorage.getItem('token'));
-
-    if(localStorage.getItem('token')!='LOGGED_IN'){
-      this.router.navigate(['login']);
-    }
-
     this.afAuth.user.subscribe(user => {
       if (user) {
         this.ngZone.run(() => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         });
       }else{
         this.ngZone.run(() => {

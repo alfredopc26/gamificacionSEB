@@ -10,7 +10,7 @@
         class="brand-image  elevation-3"
         style="opacity: 0.8;"
       />
-      <span class="brand-text font-weight-light">SEB Gamification</span>
+      <span class="brand-text font-weight-light">SEB GAMIFY</span>
     </a>
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -30,34 +30,23 @@
               </div>
             </div>
 
-        <li class="nav-item has-treeview" *ngFor="let menu of menus">
-
-          <a href="#" class="nav-link ">
-            <i class="nav-icon fas fa-circle"></i>
-            <p>
-             {{menu.menuId}} - {{menu.menuNom}}
-              <i class="right fas fa-angle-left"></i>
-            </p>
+        <li class="nav-item">
+          <a href="#" class="nav-link " [routerLink]="['/dashboard']">
+            <i class="nav-icon fas fa-columns" ></i>
+            <p>Dashboard</p>
           </a>
-          <ul class="nav nav-treeview" *ngFor="let sub of menu.submenu">
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  {{sub.submenuId}} - {{sub.submenuNom}}
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview" *ngFor="let op of sub.option">
-                <li class="nav-item">
-                  <a style="cursor: pointer;" (click)="rutaLink(op)" class="nav-link ">
-                    <i class="far fa-dot-circle nav-icon"></i>
-                    <p>{{op.optionId}} - {{op.optionNom}}</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-coins"></i>
+            <p>Ecoins</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-cogs"></i>
+            <p>Configutacion</p>
+          </a>
         </li>
       </ul>
     </nav>

@@ -7,6 +7,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 
 const routes: Routes = [
   {
@@ -16,8 +18,8 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
-        path: 'profile',
-        component: MainComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
       },
       {
         path: 'blank',

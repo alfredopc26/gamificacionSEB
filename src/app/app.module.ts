@@ -24,6 +24,7 @@ import { NotificationsDropdownMenuComponent } from './pages/main/header/notifica
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     MessagesDropdownMenuComponent,
     NotificationsDropdownMenuComponent,
-    UserDropdownMenuComponent
+    UserDropdownMenuComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
