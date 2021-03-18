@@ -5,11 +5,15 @@ import {
   HostListener,
   ElementRef,
   Renderer2,
+  Input
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
 import { UsuarioService } from '../../../../../servicios/usuario.service';
 import { Usuario } from '../../../../../modelo/usuario';
 import { CookieService } from "ngx-cookie-service";
+import { LoginObject } from "../.././../../../modelo/login-object";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dropdown-menu',
@@ -21,6 +25,7 @@ export class UserDropdownMenuComponent implements OnInit {
   usuario: any;
   id: string;
 
+  @Input() admin: LoginObject;
   @ViewChild('dropdownMenu', { static: false }) dropdownMenu;
   @HostListener('document:click', ['$event'])
   clickout(event) {
@@ -34,14 +39,14 @@ export class UserDropdownMenuComponent implements OnInit {
     private renderer: Renderer2,
     private appService: AppService,
     public apiService: UsuarioService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private afAuth: AngularFireAuth,
+    private router: Router
   ) {
     this.id = this.cookies.get("userId");
   }
 
   ngOnInit(): void {
-    this.user = this.appService.user;
-    this.obtenerUser(this.id);
   }
 
   toggleDropdownMenu() {
@@ -60,16 +65,9 @@ export class UserDropdownMenuComponent implements OnInit {
     this.renderer.removeClass(this.dropdownMenu.nativeElement, 'show');
   }
 
-  obtenerUser(id){
-
-    this.apiService.getUser(id).subscribe( ( data: Usuario[] ) => {
-      this.usuario = data;
-      console.log(this.usuario);
-      });
-  
-  }
-
   logout() {
-    this.appService.logout();
+    this.afAuth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
   }
 }

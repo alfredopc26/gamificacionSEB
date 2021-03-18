@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
 import { UsuarioService } from '../../../../servicios/usuario.service';
-import { Usuario } from '../../../../modelo/usuario';
 import { Menu } from '../../../../modelo/menu';
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -42,33 +41,13 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
     }
 
   ngOnInit() {
-
-   
-    this.obtenerUser(this.id);
-    this.obtenerMenu(this.id);
-    console.log();
+    console.log(this.admin);
   }
 
   ngAfterViewInit() {
     this.mainSidebarHeight.emit(this.mainSidebar.nativeElement.offsetHeight);
   }
 
-  obtenerUser(id){
-
-    this.apiService.getUser(id).subscribe( ( data: Usuario[] ) => {
-      this.usuario = data;
-      console.log(this.usuario);
-      });
-  
-  }
-
-obtenerMenu(id){
-
-  this.apiService.getMenu(id).subscribe( ( data: Menu[] ) => {
-    this.menus = data;
-    console.log(this.menus);
-});
-}
 
   rutaLink(opcion){
 

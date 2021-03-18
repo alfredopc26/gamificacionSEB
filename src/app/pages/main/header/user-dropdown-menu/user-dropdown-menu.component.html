@@ -12,21 +12,19 @@
   </a>
   <ul #dropdownMenu class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
     <!-- User image -->
-    <li class="user-header bg-warning">
+    <li class="user-header bg-primary">
       <img src="assets/img/icon_base.png" class="img-circle elevation-2" alt="User Image" />
 
       <p>
-        {{usuario.nombre}} {{usuario.apellido}}
-        <small>{{usuario.Ncargo}}</small>
-        <small>{{usuario.correo}}</small>
+                {{admin.nombre}}
+        <small>{{admin.correo}}</small>
+        <small>Administrador</small>
       </p>
     </li>
 
     <!-- Menu Footer-->
     <li class="user-footer">
-      <a [routerLink]="['/profile']" class="btn btn-default btn-flat">
-        Perfil
-      </a>
+
       <a (click)="logout()" class="btn btn-default btn-flat float-right"
         >Cerrar sesion</a
       >

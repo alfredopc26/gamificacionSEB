@@ -43,7 +43,8 @@ export class MainComponent implements OnInit {
                 nombre: data.nombre,
                 admin: data.admin,
               };  
-              this.admin = datos;                          
+              this.admin = datos;    
+              console.log(this.admin);                      
             });
           });
           this.router.navigate(['/dashboard']);
